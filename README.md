@@ -1,91 +1,67 @@
-# CLEAN FLASH WITH AOSP RECOVERY
+# Support My Work ❤️
 
-1.) Download the boot , dtbo  and vendor_boot images  l
-2.) Connect To Pc
+Gyuz, if you like my work, please consider donating a little bit. It helps me a lot and allows me to continue creating and sharing content. 🙏🙏🙏 
 
-3.) Reboot to fastboot  ( press  both power_button_key + vol_down_key ) and follow the steps as given below.
+### Donate (UPI, PayPal, Ko-fi):
 
-	fastboot flash vendor_boot  vendor_boot.img
+- **UPI**: [abhayprjapati@axl](upi://abhayprjapati@axl)
+- **PayPal**: [https://www.paypal.me/PrajapatiAbhay917](https://www.paypal.me/PrajapatiAbhay917)
+- **Ko-fi**: [https://ko-fi.com/thereache](https://ko-fi.com/thereache)
 
-	fastboot flash dtbo dtbo.img 
+![Donate Screenshot](https://dummyimage.com/600x200/000/fff&text=Share+Screenshot)
 
-  	fastboot flash boot boot.img
+Thank you so much for your support! Every little bit helps and means the world to me. ❤️
 
-	fastboot reboot recovery
+---
 
-	Select Wipe Data/factory Reset & Confirm
+# ROM Installation Guide for Poco X5 Pro 5G (Redwood)
 
-	Select 'apply Update' From Adb
+📌 **Flash ROM with AOSP Recovery**
 
-	adb sideload  Rom_Name.zip
+Follow these steps to install a custom ROM on your Poco X5 Pro 5G using AOSP Recovery.
 
-	Select Wipe Data/factory Reset & Confirm
+## Step 1: Download Required Files
+- `boot.img`
+- `dtbo.img`
+- `vendor_boot.img`
 
-	After Installation Complete, Reboot System.
+## Step 2: Connect to PC
+- Use a USB cable to connect your phone to the PC.
 
-	( optional ). Reboot to recovery to sideload any add-ons ( e.g magisk, firmware, gapps etc )
+## Step 3: Reboot to Fastboot Mode
+- Press and hold **Power Button + Volume Down Button** to enter Fastboot mode.
 
+## Step 4: Flash the Images
+Run the following commands in your terminal (ensure you are in the directory with the downloaded files):
 
+```bash
+fastboot flash vendor_boot vendor_boot.img
+fastboot flash dtbo dtbo.img
+fastboot flash boot boot.img
+```
 
-# DIRTY FLASH ( Without data format )
+## Step 5: Reboot to Recovery
+```bash
+fastboot reboot
+```
 
-1. Reboot to recover by holding power button and volume up simultaneously
+## Step 6: Wipe Data/Factory Reset
+- In recovery mode, select **Wipe Data/Factory Reset** and confirm.
 
-2. In the recovery menu select Apply update through ADB
+## Step 7: Apply Update via ADB
+- Select **Apply Update** from ADB and run the following command on your PC:
 
-3. adb sideload Rom_name*.zip ( or drag down the rom zip to cmd )
+```bash
+adb sideload Rom_Name.zip
+```
 
-4. After installation complete, Reboot system.
+## Step 8: Final Steps
+- After installation, select **Wipe Data/Factory Reset** again and confirm.
+- Reboot the system.
 
-# Change partition slots ( optional )
+## Optional: Install Add-ons
+- Reboot to recovery and sideload additional add-ons like **Magisk**, **firmware**, **gapps**, etc.
 
-If your device does not change slot automatically, you can do it manually just follow the given steps.
-	adb reboot bootloader
+---
 
-	fastboot getvar current-slot
-
-	fastboot --set-active=b ( for eg. your current active slot is A so you would want your current slot to set be on B )
-
-	fastboot reboot
-
- # Linux fastboot permission issue 
-
- Try using sudo $(which fastboot) instead of  fastboot 
-
-for eg.
-
-	sudo $(which fastboot) devices
-	
- 	sudo $(which fastboot) flash vendor_boot  vendor_boot.img
-  
-  and so on.
-
-
-  #  How to flash rom with TWRP?
-
-- Before doing the following you should be sure that your bootloader is unlocked.
-
-- Download twrp-TheStrechh-RX.img from [HERE](https://sourceforge.net/projects/poco-x5-pro-roms/files/Twrp/twrp-TheStrechh-R2.img/download), and platform tools from HERE [Windows](https://dl.google.com/android/repository/platform-tools-latest-windows.zip) and [Linux](https://dl.google.com/android/repository/platform-tools-latest-linux.zip)
-
-- Extract platform tools in C:\  and copy boot.img in folder.
-- Open terminal (CMD) in local folder and paste this command fastboot boot twrp-TheStrechh-R2.img , then click enter.
-- Device boot in TWRP interface go to Advance and select Flash current TWRP and confirm.
-   Done, you have TWRP installed fine, now can reboot system.
-
-First option
-
-	Download ROM, then go to Install -> select your ROM.zip -> Confirm.
-	Back to TWRP Home, Go to wipe -> format data -> wipe cache from advanced wipe (For clean flashes only. If you are just updating, ignore this step).
-	Back to TWRP Home, Go to reboot -> and change active slot. If active slot was A, select B. Or if active slot was B, select A. There is an indicator there shows active slot.
-	Back to TWRP Home, go to Advanced -> flash current TWRP . If you forget this step, you'll lose TWRP after reboot.
-	Now reboot system and enjoy.
-
-Second option
-
- 	Boot in TWRP -> format data -> yes
-	Install the ROM with adb sideload -> adb sideload rom.zip in adb termianl.
-	Back to TWRP Home, go to Advanced -> flash current TWRP . If you forget this step, you'll lose TWRP after reboot.
-	Reboot recovery and flash the gapps of your choice.
-	Now reboot system and enjoy.
-
- thanks priyanshu for this guide writing.
+Thank you for following this guide! If you have any questions or need further assistance, feel free to reach out. Enjoy your custom ROM experience!
